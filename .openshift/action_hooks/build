@@ -1,0 +1,24 @@
+#!/bin/bash 
+ 
+## where does this script live?
+## yes it is all needed to handle symlinks and multiple directories.
+## sets the TOPLEVEL variable
+SOURCE="${BASH_SOURCE[0]}"
+TOPLEVEL="$( dirname "${SOURCE}" )"
+while [ -h "${SOURCE}" ]
+do 
+  SOURCE="$(readlink "${SOURCE}")"
+  [[ ${SOURCE} != /* ]] && SOURCE="${TOPLEVEL}/${SOURCE}"
+  TOPLEVEL="$( cd -P "$( dirname "${SOURCE}"  )" && pwd )"
+done
+TOPLEVEL="$( cd -P "$( dirname "${SOURCE}" )" && pwd )"
+ 
+# source functions
+for i in ${TOPLEVEL}/lib/*
+do
+  source $i
+done
+
+log_info "Building App"
+sleep 10
+env
