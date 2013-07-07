@@ -1,0 +1,4 @@
+[submodule "rt-upstream"]
+	path = rt-upstream
+	url = https://github.com/goozbach/rt.git
+	branch = master
