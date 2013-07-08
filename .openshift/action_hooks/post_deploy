@@ -24,3 +24,4 @@ log_info "Post Deploy started"
 # Setup all vars
 source ${TOPLEVEL}/read_vars.sh
 
+log_info "Post Deploy finished"

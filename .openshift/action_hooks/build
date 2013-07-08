@@ -26,6 +26,10 @@ source ${TOPLEVEL}/read_vars.sh
 
 log_info "running make testdeps"
 cd ${OPENSHIFT_REPO_DIR}/rt-upstream && make testdeps
+log_info "make testdeps finished"
 
-log_info "Running Make install"
+log_info "Running make install"
 cd ${OPENSHIFT_REPO_DIR}/rt-upstream && make install
+log_info "make install finished"
+
+log_info "Build Finished"
