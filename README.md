@@ -1,4 +1,1 @@
-The OpenShift `perl` cartridge documentation can be found at:
-
-https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-perl/README.md
-
+A repository to deploy Request Tracker to RedHat's OpenShift
