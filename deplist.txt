@@ -64,3 +64,10 @@ Tree::Simple
 UNIVERSAL::require
 URI
 XML::RSS
+Mozilla::CA
+Net::SSL
+Crypt::SSLeay
+DateTime::Format::Natural
+Module::Refresh
+Date::Extract
+Date::Manip
