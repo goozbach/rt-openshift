@@ -19,10 +19,8 @@ do
   source $i
 done
 
-log_info "Build started"
+log_info "Post Deploy started"
 
 # Setup all vars
 source read_vars.sh
 
-log_info "Running Make install"
-cd ${OPENSHIFT_REPO_DIR}/rt-upstream && make install

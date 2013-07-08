@@ -20,4 +20,16 @@ do
 done
 
 log_info "Pre Build Started"
-sleep 10
+
+# Setup all vars
+source read_vars.sh
+
+log_info "running autoconf"
+cd ${OPENSHIFT_REPO_DIR}/rt-upstream && autoconf
+
+log_info "running configure"
+#./configure --prefix=/var/lib/openshift/51ae75d55004468767000097/app-root --with-db-type=Pg --with-db-host=127.7.207.2 --with-db-database=rt --with-db-dba=adminnsryp1h --with-db-rt-user=adminnsryp1h --with-db-rt-pass=bFwAfeQemkA1 --with-web-user=51ae75d55004468767000097 --with-web-group=51ae75d55004468767000097 --with-rt-group=51ae75d55004468767000097
+cd ${OPENSHIFT_REPO_DIR}/rt-upstream && ./configure --prefix={PREFIX} --with-db-type=${DBTYPE} --with-db-host=${DBHOST} --with-db-database=${DBNAME} --with-db-dba=${DBDBA} --with-db-rt-user=${DBUSER} --with-db-rt-pass=${DBPASS} --with-web-user=${WEBUSER} --with-web-group=${WEBGROUP} --with-rt-group=${RTGROUP}
+
+log_info "running make testdeps"
+cd ${OPENSHIFT_REPO_DIR}/rt-upstream && make testdeps
