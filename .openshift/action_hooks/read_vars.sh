@@ -14,7 +14,7 @@ DBUSER=${PGUSER}
 log_info "DBUSER: ${DBUSER}"
 DBPASS=${OPENSHIFT_POSTGRESQL_DB_PASSWORD}
 log_info "DBPASS: '********'"
-WEBUSER=${USER}
+WEBUSER=$(id -un)
 log_info "WEBUSER: ${WEBUSER}"
 WEBGROUP=$(groups | cut -d ' ' -f 1)
 log_info "WEBGROUP: ${WEBGROUP}"
