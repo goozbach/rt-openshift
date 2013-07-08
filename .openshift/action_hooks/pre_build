@@ -33,3 +33,5 @@ cd ${OPENSHIFT_REPO_DIR}/rt-upstream && ./configure --prefix=${PREFIX} --with-db
 
 log_info "running make testdeps"
 cd ${OPENSHIFT_REPO_DIR}/rt-upstream && make testdeps
+
+
