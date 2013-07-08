@@ -19,10 +19,10 @@ do
   source $i
 done
 
-log_info "Pre Build Started"
+log_info "Pre Build Started in directory ${PWD}"
 
 # Setup all vars
-source read_vars.sh
+source ./read_vars.sh
 
 log_info "running autoconf"
 cd ${OPENSHIFT_REPO_DIR}/rt-upstream && autoconf
