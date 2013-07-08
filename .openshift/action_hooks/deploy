@@ -22,5 +22,5 @@ done
 log_info "Deploy started"
 
 # Setup all vars
-source read_vars.sh
+source ${TOPLEVEL}/read_vars.sh
 
