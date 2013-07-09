@@ -39,4 +39,6 @@ log_info "Copying new perl configs"
 rsync -rv ${OPENSHIFT_REPO_DIR}/configs/perl_etc/. ${OPENSHIFT_PERL_DIR}/.
 log_info "Finished copy of perl configs"
 
+log_info "Copy mailgate into static"
+# TODO copy mailgate to static for wget to kamino
 log_info "Deploy finished"
