@@ -19,9 +19,13 @@ do
   source $i
 done
 
-log_info "Deploy started"
+log_info "Deploy started in directory $(pwd)"
 
 # Setup all vars
 source ${TOPLEVEL}/read_vars.sh
+
+log_info "Copying new perl configs"
+rsync -rav ${OPENSHIFT_REPO_DIR}/configs/perl_etc/. ${OPENSHIFT_PERL_DIR}/.
+log_info "Finished copy of perl configs"
 
 log_info "Deploy finished"
