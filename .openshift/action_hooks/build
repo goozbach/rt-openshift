@@ -32,4 +32,13 @@ log_info "Running make install"
 cd ${OPENSHIFT_REPO_DIR}/rt-upstream && make install
 log_info "make install finished"
 
+log_info "Building perl template -- perl_etc/etc/conf.d/openshift.conf"
+sed -i'' "s|__OPENSHIFT_PERL_DIR__|${OPENSHIFT_PERL_DIR}|" ${OPENSHIFT_REPO_DIR}/configs/perl_etc/etc/conf.d/openshift.conf
+sed -i'' "s|__RUNTIME_DIR__|${RUNTIME_DIR}|g" ${OPENSHIFT_REPO_DIR}/configs/perl_etc/etc/conf.d/openshift.conf
+sed -i'' "s|__OPENSHIFT_PERL_IP__|${OPENSHIFT_PERL_IP}|" ${OPENSHIFT_REPO_DIR}/configs/perl_etc/etc/conf.d/openshift.conf
+sed -i'' "s|__OPENSHIFT_PERL_PORT__|${OPENSHIFT_PERL_PORT}|" ${OPENSHIFT_REPO_DIR}/configs/perl_etc/etc/conf.d/openshift.conf
+sed -i'' "s|__USER__|$(id -un)|" ${OPENSHIFT_REPO_DIR}/configs/perl_etc/etc/conf.d/openshift.conf
+sed -i'' "s|__GROUP__|$(groups | cut -d ' ' -f 1)|" ${OPENSHIFT_REPO_DIR}/configs/perl_etc/etc/conf.d/openshift.conf
+log_info "Finished perl template -- perl_etc/etc/conf.d/openshift.conf"
+
 log_info "Build Finished"
