@@ -1,7 +1,9 @@
 #!/bin/bash
 DBTYPE=${DBTYPE:-Pg}
 log_info "DBTYPE: ${DBTYPE}"
-PREFIX=${OPENSHIFT_REPO_DIR%*/repo/}/install-root
+RUNTIME_DIR=${OPENSHIFT_REPO_DIR%*/repo/}
+log_info "RUNTIME_DIR= ${RUNTIME_DIR}"
+PREFIX=${RUNTIME_DIR}/install-root
 log_info "PREFIX: ${PREFIX}"
 #TODO add pg/mysql logic here
 DBHOST=${OPENSHIFT_POSTGRESQL_DB_HOST}

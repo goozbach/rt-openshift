@@ -30,7 +30,7 @@ log_info "autoconf finished"
 
 log_info "running configure"
 #./configure --prefix=/var/lib/openshift/51ae75d55004468767000097/app-root --with-db-type=Pg --with-db-host=127.7.207.2 --with-db-database=rt --with-db-dba=adminnsryp1h --with-db-rt-user=adminnsryp1h --with-db-rt-pass=bFwAfeQemkA1 --with-web-user=51ae75d55004468767000097 --with-web-group=51ae75d55004468767000097 --with-rt-group=51ae75d55004468767000097
-cd ${OPENSHIFT_REPO_DIR}/rt-upstream && ./configure --prefix=${PREFIX} --with-db-type=${DBTYPE} --with-db-host=${DBHOST} --with-db-database=${DBNAME} --with-db-dba=${DBDBA} --with-db-rt-user=${DBUSER} --with-db-rt-pass=${DBPASS} --with-bin-owner=$(id -un) --with-libs-owner=$(id -un) --with-libs-group=$(groups | cut -d ' ' -f 1) --with-web-user=$(id -un) --with-web-group=$(groups | cut -d ' ' -f 1) --with-rt-group=$(groups | cut -d ' ' -f 1) 
+cd ${OPENSHIFT_REPO_DIR}/rt-upstream && ./configure --prefix=${PREFIX} --enable-ssl-mailgate --with-db-type=${DBTYPE} --with-db-host=${DBHOST} --with-db-database=${DBNAME} --with-db-dba=${DBDBA} --with-db-rt-user=${DBUSER} --with-db-rt-pass=${DBPASS} --with-bin-owner=$(id -un) --with-libs-owner=$(id -un) --with-libs-group=$(groups | cut -d ' ' -f 1) --with-web-user=$(id -un) --with-web-group=$(groups | cut -d ' ' -f 1) --with-rt-group=$(groups | cut -d ' ' -f 1) 
 log_info "configure finished"
 
 log_info "Pre Build Finished"
