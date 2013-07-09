@@ -8,3 +8,7 @@ another test
 -----
 Configs working, install interface comes up when restarted.
 Deploy database creation is in the works.
+
+2013-07-09 13:20
+-----
+Database deploy working, templated out perl configs.
