@@ -24,6 +24,17 @@ log_info "Deploy started in directory $(pwd)"
 # Setup all vars
 source ${TOPLEVEL}/read_vars.sh
 
+log_info "Init database step"
+if echo "\d" | psql -f - rt | grep 'No relations found\.'
+then
+  log_info "No relations found, running init step"
+  cd ${OPENSHIFT_REPO_DIR}/rt-upstream && /usr/bin/perl -I${OPENSHIFT_REPO_DIR}/../runtime/install-root/local/lib -I${OPENSHIFT_REPO_DIR}/../runtime/install-root/lib sbin/rt-setup-database --action init --skip-create --dba-password ${OPENSHIFT_POSTGRESQL_DB_PASSWORD}  
+else
+  # TODO make upgrade logic here (not sure how)
+  log_info "Database looks to be up and installed, skipping init"
+fi
+log_info "Finished init database step"
+
 log_info "Copying new perl configs"
 rsync -rv ${OPENSHIFT_REPO_DIR}/configs/perl_etc/. ${OPENSHIFT_PERL_DIR}/.
 log_info "Finished copy of perl configs"
