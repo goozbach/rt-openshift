@@ -25,7 +25,7 @@ log_info "Deploy started in directory $(pwd)"
 source ${TOPLEVEL}/read_vars.sh
 
 log_info "Copying new perl configs"
-rsync -rav ${OPENSHIFT_REPO_DIR}/configs/perl_etc/. ${OPENSHIFT_PERL_DIR}/.
+rsync -rv ${OPENSHIFT_REPO_DIR}/configs/perl_etc/. ${OPENSHIFT_PERL_DIR}/.
 log_info "Finished copy of perl configs"
 
 log_info "Deploy finished"
