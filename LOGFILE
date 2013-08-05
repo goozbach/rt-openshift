@@ -12,3 +12,7 @@ Deploy database creation is in the works.
 2013-07-09 13:20
 -----
 Database deploy working, templated out perl configs.
+
+2013-08-05 17:22
+-----
+another tip for redeploy as the config seems to be getting ignored
