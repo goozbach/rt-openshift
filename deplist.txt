@@ -17,7 +17,7 @@ DBIx::SearchBuilder
 Devel::GlobalDestruction
 Devel::StackTrace
 Email::Address
-Encode
+Encode-2.56
 FCGI
 FCGI::ProcManager
 File::ShareDir
