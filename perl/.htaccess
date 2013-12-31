@@ -3,3 +3,15 @@ RewriteCond %{REQUEST_URI} ^/favicon\.ico$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule (.*) $1 [R=404,L]
 
+<Location />
+    Order allow,deny
+    Allow from all
+
+    SetHandler modperl
+    PerlResponseHandler Plack::Handler::Apache2
+    PerlSetVar psgi_app __RUNTIME_DIR__/install-root/sbin/rt-server
+</Location>
+<Perl>
+    use Plack::Handler::Apache2;
+    Plack::Handler::Apache2->preload("__RUNTIME_DIR__/install-root/sbin/rt-server");
+</Perl>
