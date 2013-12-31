@@ -24,6 +24,9 @@ log_info "Pre Build Started in directory ${PWD}"
 # Setup all vars
 source ${TOPLEVEL}/read_vars.sh
 
+log_info "installing Encode"
+cpanm --interactive --local-lib=${OPENSHIFT_PERL_DIR}/perl5lib/ Encode
+
 log_info "running autoconf"
 cd ${OPENSHIFT_REPO_DIR}/rt-upstream && autoconf
 log_info "autoconf finished"
