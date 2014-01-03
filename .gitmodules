@@ -1,3 +1,6 @@
 [submodule ".openshift/action_hooks/bash_app"]
 	path = .openshift/action_hooks/bash_app
 	url = https://github.com/goozbach/bash-app.git
+[submodule "rt-upstream"]
+	path = rt-upstream
+	url = https://github.com/goozbach/rt-upstream.git
