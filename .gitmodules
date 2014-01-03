@@ -1,7 +1,3 @@
-[submodule "rt-upstream"]
-	path = rt-upstream
-	url = https://github.com/goozbach/rt.git
-	branch = master
 [submodule ".openshift/action_hooks/bash_app"]
 	path = .openshift/action_hooks/bash_app
 	url = https://github.com/goozbach/bash-app.git
