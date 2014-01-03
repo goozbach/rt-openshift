@@ -43,7 +43,7 @@ log_info "Finished perl template -- perl/.htaccess"
 
 log_info "Building RT_SiteConfig"
 cp ${OPENSHIFT_REPO_DIR}/configs/RT_SiteConfig.pm ${OPENSHIFT_REPO_DIR}/../install-root/etc/
-sed -i'' "s|__HOSTNAME__|${OPENSHIFT_APP_DNS}|" ${OPENSHIFT_REPO_DIR}/../install-root/etc/RT_SiteConfig.pm
-sed -i'' "s|__REFERRERS__|${OPENSHIFT_APP_DNS}|" ${OPENSHIFT_REPO_DIR}/../install-root/etc/RT_SiteConfig.pm
+sed -i'' "s|__HOSTNAME__|${OPENSHIFT_APP_DNS}|g" ${OPENSHIFT_REPO_DIR}/../install-root/etc/RT_SiteConfig.pm
+sed -i'' "s|__REFERRERS__|${OPENSHIFT_APP_DNS}|g" ${OPENSHIFT_REPO_DIR}/../install-root/etc/RT_SiteConfig.pm
 log_info "Finished Building RT_SiteConfig"
 log_info "Build Finished"
