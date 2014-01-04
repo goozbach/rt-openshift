@@ -37,7 +37,7 @@ This file will use the variable `${OPENSHIFT_APP_DNS}` to change the settings fo
 You should additionally add any aliases you configure to the line `Set( @ReferrerWhitelist, qw(__REFERRERS__:80 rt.goozbach.net:80) );`.
 
 # NOTES/Bugs
-* An open OpenShift bug keeps Perl cartridges from overriding system Perl modules, therefore the `pre_build` hook installs the `Encode` module manually with `cpanm`.
+* An [open OpenShift bug](https://bugzilla.redhat.com/show_bug.cgi?id=1046753) keeps Perl cartridges from overriding system Perl modules, therefore the `pre_build` hook installs the `Encode` module manually with `cpanm`.
 
 # TODO
 * Need to enable the security best practices to generate a custom username/passwd instead of stock upstream password
