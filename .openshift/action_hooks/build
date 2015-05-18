@@ -25,7 +25,7 @@ log_info "Build started"
 source ${TOPLEVEL}/read_vars.sh
 
 log_info "running make testdeps"
-cd ${OPENSHIFT_REPO_DIR}/rt-upstream && make testdeps
+cd ${OPENSHIFT_REPO_DIR}/rt-upstream && make testdeps || make fixdeps
 log_info "make testdeps finished"
 
 log_info "Running make install"
