@@ -1,0 +1,39 @@
+#!/bin/bash 
+ 
+## where does this script live?
+## yes it is all needed to handle symlinks and multiple directories.
+## sets the TOPLEVEL variable
+SOURCE="${BASH_SOURCE[0]}"
+TOPLEVEL="$( dirname "${SOURCE}" )"
+while [ -h "${SOURCE}" ]
+do 
+  SOURCE="$(readlink "${SOURCE}")"
+  [[ ${SOURCE} != /* ]] && SOURCE="${TOPLEVEL}/${SOURCE}"
+  TOPLEVEL="$( cd -P "$( dirname "${SOURCE}"  )" && pwd )"
+done
+TOPLEVEL="$( cd -P "$( dirname "${SOURCE}" )" && pwd )"
+ 
+# source functions
+for i in ${TOPLEVEL}/lib/*
+do
+  source $i
+done
+
+log_info "Pre Build Started in directory ${PWD}"
+
+# Setup all vars
+source ${TOPLEVEL}/read_vars.sh
+
+log_info "installing Encode"
+cpanm --interactive --local-lib=${OPENSHIFT_PERL_DIR}/perl5lib/ Encode
+
+log_info "running autoconf"
+cd ${OPENSHIFT_REPO_DIR}/rt-upstream && autoconf
+log_info "autoconf finished"
+
+log_info "running configure"
+#./configure --prefix=/var/lib/openshift/51ae75d55004468767000097/app-root --with-db-type=Pg --with-db-host=127.7.207.2 --with-db-database=rt --with-db-dba=adminnsryp1h --with-db-rt-user=adminnsryp1h --with-db-rt-pass=bFwAfeQemkA1 --with-web-user=51ae75d55004468767000097 --with-web-group=51ae75d55004468767000097 --with-rt-group=51ae75d55004468767000097
+cd ${OPENSHIFT_REPO_DIR}/rt-upstream && ./configure --prefix=${PREFIX} --enable-ssl-mailgate --with-db-type=${DBTYPE} --with-db-host=${DBHOST} --with-db-database=${DBNAME} --with-db-dba=${DBDBA} --with-db-rt-user=${DBUSER} --with-db-rt-pass=${DBPASS} --with-bin-owner=$(id -un) --with-libs-owner=$(id -un) --with-libs-group=$(groups | cut -d ' ' -f 1) --with-web-user=$(id -un) --with-web-group=$(groups | cut -d ' ' -f 1) --with-rt-group=$(groups | cut -d ' ' -f 1) 
+log_info "configure finished"
+
+log_info "Pre Build Finished"
