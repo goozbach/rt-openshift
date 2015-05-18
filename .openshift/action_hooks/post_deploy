@@ -25,6 +25,6 @@ log_info "Post Deploy started"
 source ${TOPLEVEL}/read_vars.sh
 
 log_info "Cleaning up cpanminus"
-find ${CPANMINUS_HOME}/work -maxdepth 1 -type d -mtime +0 -exec rm -rf {} \;
+find ${CPANMINUS_HOME}/work -maxdepth 1 -type d -exec rm -rf {} \;
 
 log_info "Post Deploy finished"
