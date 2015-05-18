@@ -20,7 +20,7 @@ Clone your OpenShift git repo:
 
 Add the GitHub repo for RT:
 
-        git remote add github https://github.com/goozbach/rt-openshift.git
+        git remote add github https://github.com/thiagoalmeidasa/rt-openshift.git
         git pull -s theirs github master
 
 Push your changes back into OpenShift:
