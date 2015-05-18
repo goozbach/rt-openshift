@@ -1,0 +1,41 @@
+#!/bin/bash 
+ 
+## where does this script live?
+## yes it is all needed to handle symlinks and multiple directories.
+## sets the TOPLEVEL variable
+SOURCE="${BASH_SOURCE[0]}"
+TOPLEVEL="$( dirname "${SOURCE}" )"
+while [ -h "${SOURCE}" ]
+do 
+  SOURCE="$(readlink "${SOURCE}")"
+  [[ ${SOURCE} != /* ]] && SOURCE="${TOPLEVEL}/${SOURCE}"
+  TOPLEVEL="$( cd -P "$( dirname "${SOURCE}"  )" && pwd )"
+done
+TOPLEVEL="$( cd -P "$( dirname "${SOURCE}" )" && pwd )"
+ 
+# source functions
+for i in ${TOPLEVEL}/lib/*
+do
+  source $i
+done
+
+log_info "Deploy started in directory $(pwd)"
+
+# Setup all vars
+source ${TOPLEVEL}/read_vars.sh
+
+log_info "Init database step"
+if echo "\d" | psql -f - rt | grep 'No relations found\.'
+then
+  log_info "No relations found, running init step"
+  cd ${OPENSHIFT_REPO_DIR}/rt-upstream && /usr/bin/perl -I${OPENSHIFT_REPO_DIR}/../runtime/install-root/local/lib -I${OPENSHIFT_REPO_DIR}/../runtime/install-root/lib sbin/rt-setup-database --action init --skip-create --dba-password ${OPENSHIFT_POSTGRESQL_DB_PASSWORD}  
+else
+  # TODO make upgrade logic here (not sure how)
+  log_info "Database looks to be up and installed, skipping init"
+fi
+log_info "Finished init database step"
+
+
+log_info "Copy mailgate into static"
+# TODO copy mailgate to static for wget to kamino
+log_info "Deploy finished"
