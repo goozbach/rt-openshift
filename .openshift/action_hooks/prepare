@@ -19,12 +19,13 @@ do
   source $i
 done
 
-log_info "Post Deploy started"
+log_info "Prepare started"
 
 # Setup all vars
 source ${TOPLEVEL}/read_vars.sh
 
 log_info "Cleaning up cpanminus"
-find ${CPANMINUS_HOME}/work -maxdepth 1 -type d -mtime +0 -exec rm -rf {} \;
-
-log_info "Post Deploy finished"
+if [ -d ${CPANMINUS_HOME}/work ]; then
+	find ${CPANMINUS_HOME}/work -maxdepth 1 -type d -exec rm -rf {} \+
+fi
+log_info "Prepare finished"

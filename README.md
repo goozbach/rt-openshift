@@ -14,14 +14,14 @@ The easiest way to create the appropriate gear is using the `rhc` command:
 
         rhc app create <NAME> perl-5.10 cron-1.4 postgresql-9.2
 
-Clone your OpenShift git repo:
+Change to your OpenShift git repo:
 
-        git clone <APP CLONE URI> <DIRECTORY>
+        cd <NAME>
 
 Add the GitHub repo for RT:
 
-        git remote add github https://github.com/goozbach/rt-openshift.git
-        git pull -s theirs github master
+        git remote add github https://github.com/thiagoalmeidasa/rt-openshift.git
+        git pull -s recursive -X theirs github master
 
 Push your changes back into OpenShift:
 
